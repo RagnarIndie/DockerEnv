@@ -1,0 +1,28 @@
+version: "2"
+services:
+  nginx:
+      build:
+          context: ./nginx
+      ports:
+          - "8080:80"
+      expose:
+          - "80"
+      volumes:
+          - ./app:/var/app
+      environment:
+          - VIRTUAL_HOST=box.dev,backend.box.dev
+      restart: unless-stopped
+  fpm:
+      build:
+          context: ./fpm
+      volumes:
+          - ./app:/var/app
+      expose:
+          - "9000"
+  db:
+      image: mariadb
+      environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_DATABASE=123
+      volumes:
+          - ./database:/var/lib/mysql
