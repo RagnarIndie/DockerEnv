@@ -21,8 +21,24 @@ services:
           - "9000"
   db:
       image: mariadb
+      ports:
+          - "3306:3306"
       environment:
           - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_DATABASE=123
+          - MYSQL_DATABASE=db_box
       volumes:
           - ./database:/var/lib/mysql
+  mongodb:
+      build:
+        context: ./mongodb
+      ports:
+        - "27017:27017"
+        - "28017:28017"
+      environment:
+        - AUTH=no
+        - MONGODB_DATABASE=db_box
+  redis:
+      build:
+        context: ./redis
+      ports:
+        - "6379:6379"
