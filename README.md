@@ -8,6 +8,8 @@ Simple Docker container set for backend (PHP7) and frontend (JS MV* frameworks) 
 * MariaDB 10 on port 3306. root passwd: root. Kickstart db: db_box
 * MongoDB 3.2 on port 27017. Web console available at `http://127.0.0.1:28017/`. No auth by default. Check container docs for more options [https://hub.docker.com/r/tutum/mongodb/](https://hub.docker.com/r/tutum/mongodb/)
 * Redis 3.2 alpine on port 6379
+* Elasticsearch 5 alpine on port 9200
+* Kibana 5 on port 5601
 
 ## Usage
 1. Install [Docker](https://www.docker.com/products/overview)
@@ -26,6 +28,3 @@ Simple Docker container set for backend (PHP7) and frontend (JS MV* frameworks) 
 8. To remove container images completely run `./remove-images.sh`
 9. To show all image sizes run `./images.sh`
 10. You can always get containers status with `docker ps`
-
-##TODO
-* Add ELK container (Elasticsearch + Logstash + Kibana)

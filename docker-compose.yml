@@ -42,3 +42,13 @@ services:
         context: ./redis
       ports:
         - "6379:6379"
+  elasticsearch:
+      build:
+        context: ./elasticsearch
+      ports:
+        - "9200:9200"
+  kibana:
+      build:
+        context: ./kibana
+      ports:
+        - "5601:5601"
