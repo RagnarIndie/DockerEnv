@@ -27,7 +27,7 @@ services:
           - MYSQL_ROOT_PASSWORD=root
           - MYSQL_DATABASE=db_box
       volumes:
-          - ./database:/var/lib/mysql
+          - ./storage/mariadb:/var/lib/mysql
   mongodb:
       build:
         context: ./mongodb
@@ -37,16 +37,23 @@ services:
       environment:
         - AUTH=no
         - MONGODB_DATABASE=db_box
+      volumes:
+        - ./storage/mongodb:/data/db
   redis:
       build:
         context: ./redis
       ports:
         - "6379:6379"
+      volumes:
+        - ./storage/redis:/data
+      command: redis-server --appendonly yes
   elasticsearch:
       build:
         context: ./elasticsearch
       ports:
         - "9200:9200"
+      volumes:
+        - ./storage/elasticsearch:/usr/share/elasticsearch/data
   kibana:
       build:
         context: ./kibana
