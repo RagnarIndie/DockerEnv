@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y software-properties-common language-pac
     && apt-get update \
     && apt-get install -y php7.0 php7.0-fpm php7.0-mysql mcrypt php7.0-gd curl \
        php7.0-curl php7.0-intl php-redis php7.0-mbstring sendmail supervisor \
-       php7.0-mbstring php-mongodb \
+       php7.0-mbstring php7.0-mongodb git unzip \
     && mkdir /run/php \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
